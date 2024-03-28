@@ -7,7 +7,7 @@
       <el-menu-item index="payment" @click="navigateTo('payment')">缴费</el-menu-item>
     </el-menu>
 
-    <div class="full-screen-container">
+    <div>
       <router-view></router-view>
     </div>
   </div>
@@ -27,11 +27,6 @@ export default {
 .centered-menu {
   display: flex;
   justify-content: space-around;
-}
-
-.full-screen-container {
-  width: 100%;
-  height: calc(100vh - 50px);
-  background-color: #f0f0f0;
+  margin-bottom: 0; /* 防止菜单有默认的下边距 */
 }
 </style>

@@ -1,64 +1,56 @@
 <template>
-    <div class="navigation-page">
-      <!-- 竖向导航栏 -->
-      <div class="vertical-nav">
-        <div class="nav-item" @click="navigateTo('video')">
-          <svg class="nav-icon">
-            <!-- 这里插入视频图标的 SVG -->
-          </svg>
-          视频自述
-        </div>
-        <div class="nav-item" @click="navigateTo('text')">
-          <svg class="nav-icon">
-            <!-- 这里插入文字图标的 SVG -->
-          </svg>
-          文字描述
-        </div>
-        <div class="nav-item" @click="navigateTo('audio')">
-          <svg class="nav-icon">
-            <!-- 这里插入语音图标的 SVG -->
-          </svg>
-          语音描述
-        </div>
-      </div>
+    <div>
+      <el-menu mode="vertical" class="vertical-menu">
+        <el-menu-item index="video" @click="navigateTo('video')">
+          <el-icon><video-camera /></el-icon>
+          <span>视频自述</span>
+        </el-menu-item>
+        <el-menu-item index="text" @click="navigateTo('text')">
+          <el-icon><document /></el-icon>
+          <span>文字描述</span>
+        </el-menu-item>
+        <el-menu-item index="voice" @click="navigateTo('voice')">
+          <el-icon><mic /></el-icon>
+          <span>语音描述</span>
+        </el-menu-item>
+      </el-menu>
   
-      <!-- 另一个全屏容器 -->
-      <div class="full-screen-container">
-        <!-- 这里可以添加其他内容，例如视频、文字、语音等 -->
+      <div>
+        <router-view></router-view>
       </div>
     </div>
   </template>
   
   <script>
+  import { VideoCamera, Document, Mic } from '@element-plus/icons';
+  
   export default {
-    data() {
-      return {};
+    components: {
+      VideoCamera,
+      Document,
+      Mic
     },
     methods: {
-      navigateTo(section) {
-        // 根据点击的导航项，路由到相应的内容
-        // 你可以使用 Vue Router 来实现路由跳转
-      },
-    },
+      navigateTo(routeName) {
+        this.$router.push({ name: routeName });
+      }
+    }
   };
   </script>
   
-  <style scoped>
-  /* 样式可以根据你的需求自定义 */
-  .vertical-nav {
-    /* 竖向导航栏样式 */
-  }
-  
-  .nav-item {
-    /* 导航项样式 */
-  }
-  
-  .nav-icon {
-    /* 图标样式 */
+  <style>
+  .vertical-menu {
+    width: 200px; /* 根据需要调整宽度 */
+    height: 100vh; /* 使导航栏占据全屏高度 */
   }
   
   .full-screen-container {
-    /* 全屏容器样式 */
+    width: calc(100% - 200px); /* 使内容区域宽度适应导航栏宽度 */
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: absolute;
+    left: 200px;
+    top: 0;
   }
   </style>
   

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
 
@@ -16,14 +17,14 @@ const routes = [
     { path: '/payment', name: 'payment', component: PaymentComponent }
   ];
   
-const router = VueRouter.createRouter({
-  history: VueRouter.createWebHashHistory(),
+const router = createRouter({
+  history: createWebHashHistory(),
   routes, 
 })
 
 const app = createApp(App)
 
-app.use(ElementPlus)
 app.use(router)
+app.use(ElementPlus)
 
 app.mount('#app')
