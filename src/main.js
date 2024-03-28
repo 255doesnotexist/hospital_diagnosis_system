@@ -8,6 +8,7 @@ import DescriptionComponent from './components/description.vue';
 import DepartmentComponent from './components/department.vue';
 import DiagnosisComponent from './components/diagnosis.vue';
 import PaymentComponent from './components/payment.vue';
+import MainApp from './main.vue';
 
 
 const routes = [
