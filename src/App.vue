@@ -1,6 +1,6 @@
 <template>
     <div class="login-container">
-      <h1 class="login-title">XXXX医院智能系统</h1>
+      <h1 class="login-title stroked-text">XXXX医院智能系统</h1>
       <div class="role-selection">
         <el-radio-group v-model="userRole" @change="handleRoleChange">
           <el-radio-button label="patient">患者</el-radio-button>
@@ -9,10 +9,10 @@
         </el-radio-group>
       </div>
       <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
-        <el-form-item label="用户名" label-width="80px" prop="username">
+        <el-form-item label="用户名" label-width="80px" prop="username" class="stroked-text">
           <el-input v-model="loginForm.username"></el-input>
         </el-form-item>
-        <el-form-item label="密码" label-width="80px" prop="password">
+        <el-form-item label="密码" label-width="80px" prop="password" class="stroked-text">
           <el-input type="password" v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item>
@@ -24,9 +24,27 @@
         </el-form-item>
       </el-form>
     </div>
-  </template>
+  <div class="area">
+    <ul class="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+  </div>
+</template>
   
-  <script>
+<script setup>
+  import './style.css'
+</script>
+
+<script>
   export default {
     data() {
       return {
@@ -82,14 +100,37 @@
     align-items: center;
     justify-content: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: transparent;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 其他背景样式，如背景图像等 */
+    z-index: 1; /* 确保背景在内容下方 */
   }
   
   .login-title {
-    font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: white;
+    text-align: center;
+    font-size: 50px;
   }
+  
+  .stroked-text .el-form-item__label {
+  color: #FFFFFF; /* 文字颜色 */
+  text-shadow: 
+     1px 1px 0 #000,  /* 右下角描边 */
+  }
+
+  .stroked-text {
+  color: #FFFFFF; /* 文字颜色 */
+  text-shadow: 
+     1px 1px 0 #000,  /* 右下角描边 */
+  }
+
   
   .role-selection {
     margin-bottom: 20px;
@@ -129,6 +170,10 @@
 .full-width-height {
   width: 100%;
   height: 100%;
+}
+
+.white {
+  color: white;
 }
 
 </style>
