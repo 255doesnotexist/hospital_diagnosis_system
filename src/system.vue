@@ -15,6 +15,12 @@
 
 <script>
 export default {
+  created() {
+    console.log('System 组件被创建了');
+  },
+  mounted() {
+    console.log('System 组件被挂载了');
+  },
   methods: {
     navigateTo(routeName) {
       this.$router.push({ name: routeName });

@@ -8,15 +8,22 @@ import DescriptionComponent from './components/description.vue';
 import DepartmentComponent from './components/department.vue';
 import DiagnosisComponent from './components/diagnosis.vue';
 import PaymentComponent from './components/payment.vue';
-import MainApp from './main.vue';
+import MainAppComponent from './system.vue';  
+import LoginComponent from './login.vue';  
 
 
 const routes = [
-    { path: '/description', name: 'description', component: DescriptionComponent },
-    { path: '/department', name: 'department', component: DepartmentComponent },
-    { path: '/diagnosis', name: 'diagnosis', component: DiagnosisComponent },
-    { path: '/payment', name: 'payment', component: PaymentComponent }
+    { path: '/', name: 'login', component: LoginComponent },
+    {
+      path: '/system', name: 'system', component: MainAppComponent, children: [
+        { path: '/description', name: 'description', component: DescriptionComponent },
+        { path: '/department', name: 'department', component: DepartmentComponent },
+        { path: '/diagnosis', name: 'diagnosis', component: DiagnosisComponent },
+        { path: '/payment', name: 'payment', component: PaymentComponent }
+      ]
+    }
   ];
+  
   
 const router = createRouter({
   history: createWebHashHistory(),
